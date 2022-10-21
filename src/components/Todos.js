@@ -5,10 +5,10 @@ import Todoitem from './Todoitem.js'
 export default function Todos(props){
     let mystyle;
     if(props.mode==="dark"){
-        mystyle = {backgroundColor: "#363636",minHeight: "70vh"}
+        mystyle = {backgroundColor: "#363636",minHeight: "75vh"}
     }
     else{
-        mystyle = {backgroundColor: "white",minHeight: "70vh"}
+        mystyle = {backgroundColor: "white",minHeight: "75vh"}
     }
     return(
         <div className="py-2" style={mystyle}>

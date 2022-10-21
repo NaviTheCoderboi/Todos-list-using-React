@@ -3,9 +3,15 @@ import Navbar from './components/Navbar.js'
 import Todos from './components/Todos.js'
 import Footer from './components/footer.js'
 import Addtodo from './components/Addtodo.js'
+import About from './components/About.js'
 import {useState, useEffect} from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route
+} from "react-router-dom";
 
 function App() {
     let initTodo;
@@ -55,12 +61,16 @@ function App() {
     },[todos])
     return (
         <>
+            <Router>
             <Navbar mode={m} smode={setm}/>
             <ToastContainer position="top-center" autoClose={2000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme={m} />
             <ToastContainer position="top-center" autoClose={2000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme={m} />
-            <Addtodo mode={m} addTodo={addTodo}/>
-            <Todos mode={m} todos={todos} onDelete={onDelete}/>
+            <Routes>
+                <Route exact path="/" element={<><Addtodo mode={m} addTodo={addTodo}/><Todos mode={m} todos={todos} onDelete={onDelete}/></>}/>
+                <Route exact path="/about" element={<About mode={m}/>}/>
+            </Routes>
             <Footer mode={m}/>
+            </Router>
         </>
     );
 }
